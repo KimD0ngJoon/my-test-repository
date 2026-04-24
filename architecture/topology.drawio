@@ -1,0 +1,39 @@
+<mxfile host="app.diagrams.net" modified="2026-04-24T00:00:00.000Z" agent="claude" version="24.0.0">
+  <diagram id="topo-view" name="Deployment Topology">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="t" value="배포 토폴로지 - Tanzu K8s (초안)" style="text;fontSize=18;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="500" y="10" width="600" height="30" as="geometry"/></mxCell>
+        <mxCell id="tanzu" value="Tanzu Kubernetes Cluster (죽전 IDC)" style="rounded=1;fillColor=#dae8fc;verticalAlign=top;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="60" y="60" width="1480" height="900" as="geometry"/></mxCell>
+        <mxCell id="ing" value="Ingress Controller (Nginx)" style="rounded=1;fillColor=#ffe6cc;" vertex="1" parent="1"><mxGeometry x="600" y="90" width="400" height="40" as="geometry"/></mxCell>
+        <mxCell id="ns1" value="Namespace: cmp-app (업무망)" style="rounded=1;fillColor=#d5e8d4;verticalAlign=top;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="80" y="160" width="720" height="280" as="geometry"/></mxCell>
+        <mxCell id="ns1p1" value="Deployment: hanwha-cmp-web&#10;Replicas: 2 / Svc: ClusterIP" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="100" y="200" width="210" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns1p2" value="Deployment: hanwha-cmp-api&#10;Replicas: 2 / HPA" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="330" y="200" width="210" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns1p3" value="Deployment: cost-common-api&#10;Replicas: 2" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="560" y="200" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns1p4" value="Deployment: asset-api / cost-360-common-api" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="100" y="280" width="330" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns1p5" value="Deployment: plat-360-api / portal-api / sso" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="450" y="280" width="330" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns1p6" value="ConfigMap / Secret(Vault CSI)" style="rounded=1;fillColor=#f5f5f5;" vertex="1" parent="1"><mxGeometry x="100" y="360" width="300" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns1p7" value="Service Account + RBAC" style="rounded=1;fillColor=#f5f5f5;" vertex="1" parent="1"><mxGeometry x="420" y="360" width="360" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns2" value="Namespace: cmp-batch (업무망)" style="rounded=1;fillColor=#e1d5e7;verticalAlign=top;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="820" y="160" width="700" height="280" as="geometry"/></mxCell>
+        <mxCell id="ns2p1" value="CronJob: asset-*-scheduler" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="840" y="200" width="210" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns2p2" value="Job: asset-*-collector" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1070" y="200" width="210" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns2p3" value="Job: asset-*-dataprocess" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1300" y="200" width="210" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns2p4" value="CronJob: cost-*-batch / collector / aggregator" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="840" y="280" width="330" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns2p5" value="SparkApplication (CRD):&#10;cost-aws-spark-batch" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1190" y="280" width="320" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns2p6" value="CronJob: hanwha-cmp-batch" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="840" y="360" width="330" height="60" as="geometry"/></mxCell>
+        <mxCell id="ns3" value="Namespace: devos-prod (중요망) - NCP에서 이전" style="rounded=1;fillColor=#f8cecc;verticalAlign=top;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="80" y="460" width="1440" height="220" as="geometry"/></mxCell>
+        <mxCell id="ns3p1" value="devops-portal / gateway / pipeline / topology&#10;project / scheduler / toolchain / administrator&#10;asset-inventory / awx-delegation / jenkins-delegation&#10;vault-delegation / dashboard / organization / infra" style="rounded=1;fillColor=#ffffff;align=left;spacingLeft=8;spacingTop=8;verticalAlign=top;fontSize=11;" vertex="1" parent="1"><mxGeometry x="100" y="500" width="500" height="160" as="geometry"/></mxCell>
+        <mxCell id="ns3p2" value="StatefulSet: jenkins / keycloak / gitea / vault&#10;StatefulSet: kafka(3) / zookeeper(3)&#10;Deployment: awx / docker-mailserver" style="rounded=1;fillColor=#ffffff;align=left;spacingLeft=8;spacingTop=8;verticalAlign=top;fontSize=11;" vertex="1" parent="1"><mxGeometry x="620" y="500" width="460" height="160" as="geometry"/></mxCell>
+        <mxCell id="ns3p3" value="Ingress:&#10;- devos.hanwhalife.com&#10;- sso-devos / jenkins-devos&#10;- awx-devos / gitea-devos&#10;- vault-devos / artifact-devos&#10;- kafka-ui-devos / kube-dashboard-devos" style="rounded=1;fillColor=#fff2cc;align=left;spacingLeft=8;spacingTop=8;verticalAlign=top;fontSize=10;" vertex="1" parent="1"><mxGeometry x="1100" y="500" width="400" height="160" as="geometry"/></mxCell>
+        <mxCell id="ns4" value="Namespace: infra (공통)" style="rounded=1;fillColor=#ffe6cc;verticalAlign=top;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="80" y="700" width="1440" height="240" as="geometry"/></mxCell>
+        <mxCell id="ns4p1" value="MySQL Enterprise&#10;(StatefulSet + PV)" style="shape=cylinder3;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="100" y="740" width="180" height="80" as="geometry"/></mxCell>
+        <mxCell id="ns4p2" value="Redis Cluster" style="shape=cylinder3;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="300" y="740" width="140" height="80" as="geometry"/></mxCell>
+        <mxCell id="ns4p3" value="Prometheus&#10;Grafana" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="460" y="740" width="160" height="80" as="geometry"/></mxCell>
+        <mxCell id="ns4p4" value="ELK Stack" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="640" y="740" width="140" height="80" as="geometry"/></mxCell>
+        <mxCell id="ns4p5" value="Harbor Registry" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="800" y="740" width="160" height="80" as="geometry"/></mxCell>
+        <mxCell id="ns4p6" value="GitLab" style="rounded=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="980" y="740" width="140" height="80" as="geometry"/></mxCell>
+        <mxCell id="ns4p7" value="Pipeline: GitLab → Jenkins → Harbor → Tanzu(ArgoCD 가정)" style="rounded=1;fillColor=#f5f5f5;" vertex="1" parent="1"><mxGeometry x="100" y="850" width="1400" height="60" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

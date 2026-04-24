@@ -22,8 +22,8 @@
         <mxCell id="tanzuDevOps" value="DevOps Cluster" style="rounded=1;fillColor=#FFF5F5;strokeColor=#D9534F;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=13;fontColor=#D9534F;align=left;spacingLeft=15;" vertex="1" parent="1">
           <mxGeometry x="100" y="170" width="820" height="280" as="geometry"/>
         </mxCell>
-        <mxCell id="harbor" value="Harbor&#10;Container Registry" style="shape=image;image=https://goharbor.io/img/logos/harbor-icon-color.png;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=11;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="140" y="220" width="70" height="70" as="geometry"/>
+        <mxCell id="harbor" value="Harbor&#10;Container Registry&#10;h-harbor.hanwhalife.com" style="shape=image;image=https://goharbor.io/img/logos/harbor-icon-color.png;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="220" width="70" height="90" as="geometry"/>
         </mxCell>
         <mxCell id="harborDesc" value="AKS · NKS 등 외부 클러스터에서&#10;Image Pull (단방향, HTTPS 443)" style="text;fontSize=10;align=left;fontColor=#666666;" vertex="1" parent="1">
           <mxGeometry x="230" y="240" width="240" height="40" as="geometry"/>
@@ -88,7 +88,7 @@
         </mxCell>
 
         <!-- Subnet 2a -->
-        <mxCell id="subnetA" value="Private Subnet ap-northeast-2a&#10;10.253.162.0/26" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;fontStyle=1;container=1;pointerEvents=0;collapsible=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;strokeColor=#147EBA;fillColor=#E6F2F8;verticalAlign=top;align=left;spacingLeft=25;fontColor=#147EBA;dashed=0;" vertex="1" parent="1">
+        <mxCell id="subnetA" value="Private Subnet ap-northeast-2a&#10;10.253.162.64/26" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;fontStyle=1;container=1;pointerEvents=0;collapsible=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_security_group;strokeColor=#147EBA;fillColor=#E6F2F8;verticalAlign=top;align=left;spacingLeft=25;fontColor=#147EBA;dashed=0;" vertex="1" parent="1">
           <mxGeometry x="1110" y="200" width="270" height="130" as="geometry"/>
         </mxCell>
         <mxCell id="ecsA" value="ECS" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=10;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.elastic_container_service;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;" vertex="1" parent="1">
@@ -229,7 +229,7 @@
         <mxCell id="legend" value="네트워크 관계 범례" style="rounded=1;fillColor=#ffffff;strokeColor=#888888;verticalAlign=top;fontStyle=1;fontSize=12;" vertex="1" parent="1">
           <mxGeometry x="60" y="1160" width="900" height="220" as="geometry"/>
         </mxCell>
-        <mxCell id="legendBody" value="━━ (주황, 굵게) : AWS → Tanzu 단방향 접근 (AWS Direct Connect)&#10;&#10;       • AWS ECS/Lambda/EMR (10.253.162.0/26, 10.253.162.192/26)&#10;         → MySQL (x.x.x.x:xxxx),  RabbitMQ (10.10.41.211:5672),  Elasticsearch (10.10.41.210:443)&#10;         DNS: h-cloud-api.hanwhalife.com, h-cloud-elasticsearch.hanwhalife.com&#10;&#10;┈┈ (점선) : 외부 K8s → Tanzu DevOps Cluster Harbor 이미지 Pull (단방향, HTTPS 443)&#10;&#10;       • Azure AKS → Harbor&#10;       • NCP 민간 NKS → Harbor&#10;       • NCP 금융 NKS (10.239.193.64/26) → Harbor&#10;&#10;※ 금융망 격리 : NCP 금융존 ↔ NCP 민간존 직접 통신 없음, 모두 Tanzu 중계" style="text;fontSize=11;align=left;spacingLeft=15;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+        <mxCell id="legendBody" value="━━ (주황, 굵게) : AWS → Tanzu 단방향 접근 (AWS Direct Connect)&#10;&#10;       • AWS ECS/Lambda/EMR (10.253.162.64/26, 10.253.162.192/26)&#10;         → MySQL (x.x.x.x:xxxx),  RabbitMQ (10.10.41.211:5672),  Elasticsearch (10.10.41.210:443)&#10;         DNS: h-cloud-api.hanwhalife.com, h-cloud-elasticsearch.hanwhalife.com&#10;&#10;┈┈ (점선) : 외부 K8s → Tanzu DevOps Cluster Harbor 이미지 Pull (단방향, HTTPS 443)&#10;&#10;       • Azure AKS → Harbor&#10;       • NCP 민간 NKS → Harbor&#10;       • NCP 금융 NKS (10.239.193.64/26) → Harbor&#10;&#10;※ 금융망 격리 : NCP 금융존 ↔ NCP 민간존 직접 통신 없음, 모두 Tanzu 중계" style="text;fontSize=11;align=left;spacingLeft=15;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
           <mxGeometry x="70" y="1190" width="880" height="180" as="geometry"/>
         </mxCell>
 

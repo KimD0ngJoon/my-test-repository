@@ -144,7 +144,7 @@
         </mxCell>
 
         <!-- ================= Azure : 우측 중단 ================= -->
-        <mxCell id="azCloud" value="Azure (Korea Central) — HCL DevOps 구독: 00000000-0000-0000-0000-000000000000" style="rounded=1;fillColor=#F5FAFF;strokeColor=#0078D4;strokeWidth=3;verticalAlign=top;fontStyle=1;fontSize=14;fontColor=#0078D4;align=left;spacingLeft=20;" vertex="1" parent="1">
+        <mxCell id="azCloud" value="Azure (Korea Central) — HCL DevOps 구독: 49539f7f-bb9d-4cea-8e2e-6ee6dc8085d2" style="rounded=1;fillColor=#F5FAFF;strokeColor=#0078D4;strokeWidth=3;verticalAlign=top;fontStyle=1;fontSize=14;fontColor=#0078D4;align=left;spacingLeft=20;" vertex="1" parent="1">
           <mxGeometry x="1160" y="560" width="1200" height="200" as="geometry"/>
         </mxCell>
         <mxCell id="aks" value="AKS Cluster&#10;(Azure Kubernetes Service)&#10;CIDR: (미정)" style="shape=mxgraph.azure2.kubernetes_services;fillColor=#0078D4;strokeColor=none;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=11;fontStyle=1;" vertex="1" parent="1">

@@ -1,81 +1,308 @@
 <mxfile host="app.diagrams.net" modified="2026-04-24T00:00:00.000Z" agent="claude" version="24.0.0">
   <diagram id="system-view" name="System Architecture">
-    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+    <mxGraphModel dx="2400" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1500" math="0" shadow="0">
       <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="title" value="한화생명 CMP 고도화 - 시스템 아키텍처 (초안 v0.1)" style="text;html=1;fontSize=20;fontStyle=1;align=center;" vertex="1" parent="1">
-          <mxGeometry x="400" y="10" width="800" height="30" as="geometry" />
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="한화생명 CMP 고도화 - 시스템 아키텍처 v0.3" style="text;fontSize=22;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="700" y="20" width="1000" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="idc" value="죽전 IDC (Tanzu)" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="60" y="60" width="820" height="900" as="geometry" />
+
+        <!-- ============ DEOCHEON IDC ============ -->
+        <mxCell id="idc" value="죽전 IDC (Tanzu Kubernetes)" style="rounded=1;fillColor=#F5F9FD;strokeColor=#0091DA;strokeWidth=3;verticalAlign=top;fontSize=15;fontStyle=1;fontColor=#0091DA;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="1280" height="1340" as="geometry"/>
         </mxCell>
-        <mxCell id="jungyo" value="중요망 (CR/배포)" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="80" y="100" width="780" height="260" as="geometry" />
+        <mxCell id="tanzuLogo" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/VMware_Tanzu_Logo.svg/512px-VMware_Tanzu_Logo.svg.png;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="100" width="100" height="30" as="geometry"/>
         </mxCell>
-        <mxCell id="devos" value="DevOS (devops-prod namespace)&#10;portal / gateway / pipeline / topology&#10;project / scheduler / toolchain&#10;Jenkins / AWX / Gitea / Vault / Kafka / Keycloak" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
-          <mxGeometry x="100" y="140" width="360" height="200" as="geometry" />
+
+        <!-- User access -->
+        <mxCell id="userZone" value="사용자 접근" style="rounded=1;fillColor=#ffffff;strokeColor=#666666;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="90" y="150" width="320" height="200" as="geometry"/>
         </mxCell>
-        <mxCell id="itsupport" value="IT Support (배포)&#10;- CR 망분리 로그인 모듈&#10;- 배포 History MySQL Enterprise" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
-          <mxGeometry x="480" y="140" width="360" height="200" as="geometry" />
+        <mxCell id="uIT" value="IT 운영팀" style="shape=mxgraph.gcp2.users;fillColor=#4285F4;strokeColor=none;fontSize=11;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="120" y="190" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="upmu" value="업무망 (CMP)" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="80" y="380" width="780" height="560" as="geometry" />
+        <mxCell id="uDev" value="개발자" style="shape=mxgraph.gcp2.users;fillColor=#34A853;strokeColor=none;fontSize=11;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="210" y="190" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="cmpapp" value="CMP Application (cmp-app namespace)" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="100" y="420" width="740" height="200" as="geometry" />
+        <mxCell id="uMSP" value="MSP" style="shape=mxgraph.gcp2.users;fillColor=#FBBC04;strokeColor=none;fontSize=11;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300" y="190" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="web" value="hanwha-cmp-web&#10;(React)" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="120" y="460" width="140" height="60" as="geometry" />
+        <mxCell id="fw1" value="방화벽 / WAF" style="shape=mxgraph.cisco19.firewall_2;fillColor=#FF6D6D;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="210" y="280" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="api" value="hanwha-cmp-api&#10;cost-common-api&#10;cost-360-common-api&#10;asset-api" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="280" y="460" width="180" height="80" as="geometry" />
+
+        <!-- Ingress -->
+        <mxCell id="ingress" value="Ingress Controller (Nginx)&#10;cmp.hanwhalife.com / devos.hanwhalife.com" style="shape=mxgraph.kubernetes.icon;prIcon=svc;fillColor=#326CE5;strokeColor=none;html=1;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="440" y="180" width="60" height="60" as="geometry"/>
         </mxCell>
-        <mxCell id="plat" value="plat-360-api&#10;plat-360-portal-api&#10;plat-360-sso" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="480" y="460" width="160" height="80" as="geometry" />
+
+        <!-- ===== 중요망 (CR/배포) ===== -->
+        <mxCell id="zoneJung" value="중요망 (CR / 배포)" style="rounded=1;fillColor=#FFF5F5;strokeColor=#D9534F;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=13;fontColor=#D9534F;" vertex="1" parent="1">
+          <mxGeometry x="90" y="380" width="1220" height="280" as="geometry"/>
         </mxCell>
-        <mxCell id="sso" value="Keycloak&#10;(SSO/IAM)" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="660" y="460" width="140" height="60" as="geometry" />
+        <mxCell id="nsDevos" value="Namespace: devops-prod" style="rounded=1;fillColor=#ffffff;strokeColor=#326CE5;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=12;fontColor=#326CE5;" vertex="1" parent="1">
+          <mxGeometry x="110" y="420" width="1180" height="220" as="geometry"/>
         </mxCell>
-        <mxCell id="cmpbatch" value="CMP Batch (cmp-batch namespace) - Application과 물리 분리" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="100" y="640" width="740" height="280" as="geometry" />
+        <mxCell id="devosPortal" value="devops-portal&#10;gateway&#10;dashboard" style="shape=mxgraph.kubernetes.icon;prIcon=deploy;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="assetbatch" value="Asset 배치&#10;aws/azure/ncp-scheduler&#10;aws/azure/ncp-collector&#10;aws/azure/ncp-dataprocess&#10;common-scheduler/dataprocess&#10;es-dataprocess&#10;resourceopti-dataprocess&#10;server-scheduling-batch" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
-          <mxGeometry x="120" y="680" width="220" height="220" as="geometry" />
+        <mxCell id="devosPipe" value="pipeline&#10;scheduler&#10;toolchain" style="shape=mxgraph.kubernetes.icon;prIcon=deploy;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="costbatch" value="Cost 배치&#10;aws-billing-collector&#10;aws-billing-legacy-batch&#10;aws-billing-mart-batch&#10;aws-spark-batch&#10;azure-billing-collector&#10;azure-billing-aggregator&#10;360-nbs-billing-batch" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
-          <mxGeometry x="360" y="680" width="220" height="220" as="geometry" />
+        <mxCell id="devosProj" value="project&#10;organization&#10;topology" style="shape=mxgraph.kubernetes.icon;prIcon=deploy;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="commonbatch" value="공통 배치&#10;hanwha-cmp-batch" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
-          <mxGeometry x="600" y="680" width="220" height="80" as="geometry" />
+        <mxCell id="jenkins" value="Jenkins" style="shape=image;image=https://www.jenkins.io/images/logos/jenkins/jenkins.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="infra" value="공통 인프라&#10;MySQL Enterprise / Redis&#10;Kafka / Vault / Harbor&#10;GitLab / Prometheus / ELK" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
-          <mxGeometry x="600" y="780" width="220" height="120" as="geometry" />
+        <mxCell id="gitea" value="Gitea" style="shape=image;image=https://about.gitea.com/gitea.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="640" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="csp" value="CSP 영역 (Public)" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="920" y="60" width="620" height="900" as="geometry" />
+        <mxCell id="awx" value="AWX" style="shape=image;image=https://raw.githubusercontent.com/ansible/awx-logos/master/awx/ui/client/assets/logo-login.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="aws" value="AWS (Linked Account)&#10;- Cost &amp; Usage Report (CUR)&#10;- Resource API" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
-          <mxGeometry x="940" y="120" width="580" height="240" as="geometry" />
+        <mxCell id="keycloak1" value="Keycloak&#10;(DevOS SSO)" style="shape=image;image=https://www.keycloak.org/resources/images/keycloak_icon_512px.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="azure" value="Azure (Subscription)&#10;- Cost Management API&#10;- Resource Graph" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
-          <mxGeometry x="940" y="380" width="580" height="240" as="geometry" />
+        <mxCell id="vault" value="Vault" style="shape=image;image=https://www.vaultproject.io/img/logo-hashicorp.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="880" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="ncp" value="NCP FIN (Subaccount)&#10;- Billing API&#10;- Resource API" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
-          <mxGeometry x="940" y="640" width="580" height="240" as="geometry" />
+        <mxCell id="kafkaDevos" value="Kafka (3)&#10;Zookeeper (3)" style="shape=image;image=https://kafka.apache.org/logos/kafka_logo--simple.png;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="960" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="e1" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="assetbatch" target="aws">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="mysqlDevos" value="MySQL Enterprise&#10;(배포 History)" style="shape=mxgraph.mscae.database_server;fillColor=#00758F;strokeColor=none;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="e2" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="costbatch" target="azure">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="harbor" value="Harbor&#10;Registry" style="shape=image;image=https://goharbor.io/img/logos/harbor-icon-color.png;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="470" width="50" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="e3" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="costbatch" target="ncp">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="itsuportCR" value="IT Support 로그인 모듈 (망분리 전용)&#10;sso-devos.hanwhalife.com" style="rounded=1;fillColor=#FFE5E5;strokeColor=#D9534F;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="580" width="500" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="e4" style="endArrow=classic;html=1;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="api" target="devos">
-          <mxGeometry relative="1" as="geometry" />
+
+        <!-- Firewall between 중요망 / 업무망 -->
+        <mxCell id="fwMid" value="L7 방화벽 (망분리 경계)" style="shape=mxgraph.cisco19.firewall_2;fillColor=#FF6D6D;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="680" width="60" height="60" as="geometry"/>
         </mxCell>
+
+        <!-- ===== 업무망 (CMP) ===== -->
+        <mxCell id="zoneUpmu" value="업무망 (CMP 서비스)" style="rounded=1;fillColor=#F0F9F0;strokeColor=#5CB85C;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=13;fontColor=#5CB85C;" vertex="1" parent="1">
+          <mxGeometry x="90" y="770" width="1220" height="500" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="nsApp" value="Namespace: cmp-app" style="rounded=1;fillColor=#ffffff;strokeColor=#326CE5;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=12;fontColor=#326CE5;" vertex="1" parent="1">
+          <mxGeometry x="110" y="810" width="580" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="webApp" value="hanwha-cmp-web&#10;(React)" style="shape=mxgraph.kubernetes.icon;prIcon=deploy;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="860" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmpApiK" value="hanwha-cmp-api" style="shape=mxgraph.kubernetes.icon;prIcon=deploy;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="860" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="costApiK" value="cost-common-api&#10;cost-360-common-api" style="shape=mxgraph.kubernetes.icon;prIcon=deploy;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="420" y="860" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="assetApiK" value="asset-api" style="shape=mxgraph.kubernetes.icon;prIcon=deploy;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="940" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="platApiK" value="plat-360-api&#10;plat-360-portal-api" style="shape=mxgraph.kubernetes.icon;prIcon=deploy;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="300" y="940" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ssoCmp" value="plat-360-sso&#10;(Keycloak)" style="shape=image;image=https://www.keycloak.org/resources/images/keycloak_icon_512px.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="520" y="940" width="50" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="nsBatch" value="Namespace: cmp-batch" style="rounded=1;fillColor=#ffffff;strokeColor=#326CE5;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=12;fontColor=#326CE5;" vertex="1" parent="1">
+          <mxGeometry x="710" y="810" width="580" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="schedKit" value="Scheduler&#10;(asset/server-scheduling)" style="shape=mxgraph.kubernetes.icon;prIcon=cronjob;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="740" y="860" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="collKit" value="Collector&#10;(asset/cost *-collector)" style="shape=mxgraph.kubernetes.icon;prIcon=job;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="920" y="860" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="dpKit" value="DataProcess&#10;(asset/cost *-dataprocess&#10;*-aggregator, mart-batch)" style="shape=mxgraph.kubernetes.icon;prIcon=job;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="860" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="sparkKit" value="cost-aws-spark-batch&#10;(Spark on K8s)" style="shape=image;image=https://spark.apache.org/images/spark-logo-trademark.png;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="740" y="940" width="80" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmpCommonBatch" value="hanwha-cmp-batch" style="shape=mxgraph.kubernetes.icon;prIcon=cronjob;fillColor=#326CE5;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="940" width="50" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Data/Infra -->
+        <mxCell id="nsInfra" value="Namespace: infra (공통)" style="rounded=1;fillColor=#ffffff;strokeColor=#326CE5;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=12;fontColor=#326CE5;" vertex="1" parent="1">
+          <mxGeometry x="110" y="1040" width="1180" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="mysqlCmp" value="MySQL Enterprise&#10;(CMP DB / Mart)" style="shape=image;image=https://labs.mysql.com/common/logos/mysql-logo.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1090" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="redisInfra" value="Redis" style="shape=image;image=https://redis.io/wp-content/uploads/2024/04/Logotype.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="260" y="1100" width="60" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="kafkaInfra" value="Kafka&#10;(CMP Event Bus)" style="shape=image;image=https://kafka.apache.org/logos/kafka_logo--simple.png;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="370" y="1090" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="esInfra" value="Elasticsearch" style="shape=image;image=https://www.elastic.co/static-res/images/elastic-logo-200.png;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="1090" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="gitlabInfra" value="GitLab" style="shape=image;image=https://about.gitlab.com/images/press/logo/svg/gitlab-icon-rgb.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="590" y="1090" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="harborInfra" value="Harbor" style="shape=image;image=https://goharbor.io/img/logos/harbor-icon-color.png;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1090" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="promInfra" value="Prometheus" style="shape=image;image=https://prometheus.io/assets/prometheus_logo_grey.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="810" y="1090" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="grafanaInfra" value="Grafana" style="shape=image;image=https://grafana.com/static/img/menu/grafana2.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1090" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="vaultInfra" value="Vault" style="shape=image;image=https://www.vaultproject.io/img/logo-hashicorp.svg;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="1090" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="alertInfra" value="AlertNow&#10;(UMS 알림)" style="rounded=1;fillColor=#FFD966;strokeColor=#BF9000;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="1090" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ===== Management Zone (관리망) ===== -->
+        <mxCell id="zoneMgmt" value="관리망 (로그/모니터링/백업)" style="rounded=1;fillColor=#FFF8E1;strokeColor=#F0AD4E;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=13;fontColor=#F0AD4E;" vertex="1" parent="1">
+          <mxGeometry x="90" y="1300" width="1220" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="logAgg" value="Log Aggregator (Fluentd/ELK)" style="shape=mxgraph.kubernetes.icon;prIcon=ds;fillColor=#F0AD4E;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1340" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="backup" value="Backup Server" style="shape=mxgraph.azure2.backup;fillColor=#0072C6;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=10;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="440" y="1340" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="siem" value="SIEM (보안 감사)" style="rounded=1;fillColor=#ffffff;strokeColor=#F0AD4E;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1350" width="150" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="itsm" value="ITSM (한화시스템)&#10;통합계정" style="rounded=1;fillColor=#ffffff;strokeColor=#F0AD4E;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1340" width="180" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ============ CSP Public ============ -->
+        <!-- AWS -->
+        <mxCell id="awsCloud" value="AWS (Linked Account)" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=13;fontStyle=1;container=1;pointerEvents=0;collapsible=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#FF9900;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="120" width="960" height="380" as="geometry"/>
+        </mxCell>
+        <mxCell id="awsCUR" value="Cost &amp; Usage Report&#10;(S3)" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;fontStyle=0;container=0;pointerEvents=1;collapsible=0;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;labelPosition=right;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="180" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="awsCostExp" value="Cost Explorer" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;fontStyle=0;container=0;pointerEvents=1;collapsible=0;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cost_explorer;labelPosition=right;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1700" y="180" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="awsEc2" value="EC2 / RDS&#10;(Resource 조회)" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2;labelPosition=right;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="180" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="awsIAM" value="IAM Role&#10;(수집 권한)" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.identity_and_access_management_iam;labelPosition=right;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="300" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="awsCloudWatch" value="CloudWatch&#10;(Metric)" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=11;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;labelPosition=right;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1700" y="300" width="60" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="awsOrg" value="Organizations&#10;(master/payer 사용 불가)" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=10;fontStyle=3;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.organizations;labelPosition=right;align=left;spacingLeft=5;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="300" width="60" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Azure -->
+        <mxCell id="azCloud" value="Azure (Subscription level)" style="rounded=1;fillColor=none;strokeColor=#0078D4;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=13;fontColor=#0078D4;dashed=0;spacingLeft=30;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="540" width="960" height="340" as="geometry"/>
+        </mxCell>
+        <mxCell id="azSub" value="Subscription" style="shape=mxgraph.azure2.subscriptions;fillColor=#0078D4;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="600" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="azCost" value="Cost Management" style="shape=mxgraph.azure2.cost_management;fillColor=#0078D4;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1700" y="600" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="azResGraph" value="Resource Graph" style="shape=mxgraph.azure2.resource_groups;fillColor=#0078D4;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="600" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="azVM" value="Virtual Machine&#10;SQL DB" style="shape=mxgraph.azure2.virtual_machine;fillColor=#0078D4;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="720" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="azAD" value="Entra ID&#10;(수집 권한)" style="shape=mxgraph.azure2.azure_active_directory;fillColor=#0078D4;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1700" y="720" width="50" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="azMon" value="Monitor" style="shape=mxgraph.azure2.monitor;fillColor=#0078D4;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="720" width="50" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- NCP -->
+        <mxCell id="ncpCloud" value="NCP FIN (Subaccount)" style="rounded=1;fillColor=none;strokeColor=#03C75A;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=13;fontColor=#03C75A;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="920" width="960" height="290" as="geometry"/>
+        </mxCell>
+        <mxCell id="ncpBilling" value="Billing API" style="rounded=1;fillColor=#03C75A;strokeColor=none;fontColor=#ffffff;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="980" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ncpRes" value="Resource API&#10;(Server/DB/Storage)" style="rounded=1;fillColor=#03C75A;strokeColor=none;fontColor=#ffffff;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1620" y="980" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ncpSub" value="Subaccount&#10;(수집 계정)" style="rounded=1;fillColor=#03C75A;strokeColor=none;fontColor=#ffffff;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="980" width="140" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ncpK8s" value="Neuro Cloud K8s&#10;(기존 DevOS - 이전 대상)" style="rounded=1;fillColor=#FFE5E5;strokeColor=#D9534F;fontSize=11;fontStyle=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="1080" width="540" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- ============ Network Links ============ -->
+        <!-- VPN Gateways -->
+        <mxCell id="vpnAws" value="AWS Direct Connect /&#10;Site-to-Site VPN" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.direct_connect;sketch=0;outlineConnect=0;gradientColor=none;html=1;labelPosition=right;align=left;spacingLeft=5;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="290" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="vpnAz" value="Azure ExpressRoute /&#10;VPN Gateway" style="shape=mxgraph.azure2.virtual_network_gateways;fillColor=#0078D4;strokeColor=none;labelPosition=right;align=left;verticalLabelPosition=middle;verticalAlign=middle;spacingLeft=5;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="680" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="vpnNcp" value="NCP 전용선 /&#10;IPsec VPN" style="rounded=1;fillColor=#03C75A;strokeColor=none;fontColor=#ffffff;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="1040" width="60" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ============ Edges ============ -->
+        <!-- User → FW → Ingress -->
+        <mxCell id="eU1" style="endArrow=classic;html=1;strokeColor=#333333;" edge="1" parent="1" source="uIT" target="fw1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="eU2" style="endArrow=classic;html=1;strokeColor=#333333;" edge="1" parent="1" source="uDev" target="fw1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="eU3" style="endArrow=classic;html=1;strokeColor=#333333;" edge="1" parent="1" source="uMSP" target="fw1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="eFwIng" value="HTTPS" style="endArrow=classic;html=1;strokeColor=#333333;fontSize=10;" edge="1" parent="1" source="fw1" target="ingress"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Ingress → zones -->
+        <mxCell id="eIngDevos" value="devos.hanwhalife.com" style="endArrow=classic;html=1;strokeColor=#D9534F;fontSize=10;" edge="1" parent="1" source="ingress" target="nsDevos"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="eIngCmp" value="cmp.hanwhalife.com" style="endArrow=classic;html=1;strokeColor=#5CB85C;fontSize=10;" edge="1" parent="1" source="ingress" target="webApp"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- CMP API ↔ DevOS (CR/배포 연계) -->
+        <mxCell id="eCmpDevos" value="CR/배포 연계 (REST)" style="endArrow=classic;startArrow=classic;html=1;strokeColor=#D9534F;dashed=1;fontSize=10;" edge="1" parent="1" source="cmpApiK" target="fwMid"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="eDevosFw" style="endArrow=none;html=1;strokeColor=#D9534F;dashed=1;" edge="1" parent="1" source="fwMid" target="devosPipe"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Collector → CSP -->
+        <mxCell id="eCollAws" value="HTTPS&#10;CUR / Cost Explorer" style="endArrow=classic;html=1;strokeColor=#FF9900;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="collKit" target="vpnAws"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="eCollAz" value="HTTPS&#10;Cost Mgmt API" style="endArrow=classic;html=1;strokeColor=#0078D4;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="collKit" target="vpnAz"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="eCollNcp" value="HTTPS&#10;Billing API" style="endArrow=classic;html=1;strokeColor=#03C75A;strokeWidth=2;fontSize=10;" edge="1" parent="1" source="collKit" target="vpnNcp"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- VPN → CSP services -->
+        <mxCell id="eAwsIn" style="endArrow=classic;html=1;strokeColor=#FF9900;strokeWidth=2;dashed=1;" edge="1" parent="1" source="vpnAws" target="awsCUR"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="eAzIn" style="endArrow=classic;html=1;strokeColor=#0078D4;strokeWidth=2;dashed=1;" edge="1" parent="1" source="vpnAz" target="azCost"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="eNcpIn" style="endArrow=classic;html=1;strokeColor=#03C75A;strokeWidth=2;dashed=1;" edge="1" parent="1" source="vpnNcp" target="ncpBilling"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Pipeline arrows inside 업무망 -->
+        <mxCell id="ePipe1" style="endArrow=classic;html=1;strokeColor=#666666;" edge="1" parent="1" source="schedKit" target="collKit"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ePipe2" style="endArrow=classic;html=1;strokeColor=#666666;" edge="1" parent="1" source="collKit" target="dpKit"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ePipe3" value="write" style="endArrow=classic;html=1;strokeColor=#00758F;fontSize=10;" edge="1" parent="1" source="dpKit" target="mysqlCmp"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ePipe4" style="endArrow=classic;html=1;strokeColor=#00758F;" edge="1" parent="1" source="cmpApiK" target="mysqlCmp"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Alerts -->
+        <mxCell id="eAlert" value="UMS 알림" style="endArrow=classic;html=1;strokeColor=#BF9000;fontSize=10;" edge="1" parent="1" source="cmpApiK" target="alertInfra"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- ============ Legend ============ -->
+        <mxCell id="legend" value="범례" style="rounded=1;fillColor=#ffffff;strokeColor=#888888;verticalAlign=top;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="1240" width="960" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg1" value="■ 중요망(빨강) : CR/배포, 망분리 대상&#10;■ 업무망(녹색) : CMP 서비스 (Application / Batch 네임스페이스 분리)&#10;■ 관리망(노랑) : 로그/모니터링/백업&#10;━ 주황 : AWS 트래픽    ━ 파랑 : Azure 트래픽    ━ 녹색 : NCP 트래픽&#10;┈ 점선 : 망분리 경계 횡단 / CSP 내부 라우팅&#10;Tanzu 로고 : 죽전 IDC 온프렘 Kubernetes&#10;K8s 아이콘 색(파랑) : Namespace 단위 리소스 (Deployment / CronJob / Job)" style="text;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="1270" width="920" height="140" as="geometry"/>
+        </mxCell>
+
       </root>
     </mxGraphModel>
   </diagram>

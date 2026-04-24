@@ -1,0 +1,41 @@
+<mxfile host="app.diagrams.net" modified="2026-04-24T00:00:00.000Z" agent="claude" version="24.0.0">
+  <diagram id="app-view" name="Application Architecture">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" page="1" pageWidth="1600" pageHeight="1000">
+      <root>
+        <mxCell id="0" /><mxCell id="1" parent="0" />
+        <mxCell id="t" value="애플리케이션 아키텍처 - 런타임 의존성 (초안)" style="text;fontSize=18;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="500" y="10" width="600" height="30" as="geometry"/></mxCell>
+        <mxCell id="user" value="사용자 (IT 운영팀/개발자/MSP)" style="shape=actor;" vertex="1" parent="1"><mxGeometry x="80" y="100" width="60" height="80" as="geometry"/></mxCell>
+        <mxCell id="web" value="hanwha-cmp-web" style="rounded=1;fillColor=#dae8fc;" vertex="1" parent="1"><mxGeometry x="220" y="120" width="160" height="50" as="geometry"/></mxCell>
+        <mxCell id="gw" value="API Gateway&#10;(Ingress/Nginx)" style="rounded=1;fillColor=#ffe6cc;" vertex="1" parent="1"><mxGeometry x="420" y="120" width="140" height="50" as="geometry"/></mxCell>
+        <mxCell id="sso" value="plat-360-sso&#10;(Keycloak)" style="rounded=1;fillColor=#fff2cc;" vertex="1" parent="1"><mxGeometry x="600" y="50" width="140" height="50" as="geometry"/></mxCell>
+        <mxCell id="cmpapi" value="hanwha-cmp-api" style="rounded=1;fillColor=#d5e8d4;" vertex="1" parent="1"><mxGeometry x="600" y="120" width="140" height="50" as="geometry"/></mxCell>
+        <mxCell id="costapi" value="cost-common-api&#10;cost-360-common-api" style="rounded=1;fillColor=#d5e8d4;" vertex="1" parent="1"><mxGeometry x="600" y="190" width="140" height="60" as="geometry"/></mxCell>
+        <mxCell id="assetapi" value="asset-api" style="rounded=1;fillColor=#d5e8d4;" vertex="1" parent="1"><mxGeometry x="600" y="270" width="140" height="50" as="geometry"/></mxCell>
+        <mxCell id="platapi" value="plat-360-api&#10;plat-360-portal-api" style="rounded=1;fillColor=#d5e8d4;" vertex="1" parent="1"><mxGeometry x="600" y="340" width="140" height="60" as="geometry"/></mxCell>
+        <mxCell id="db" value="MySQL&#10;(CMP DB)" style="shape=cylinder3;fillColor=#e1d5e7;" vertex="1" parent="1"><mxGeometry x="820" y="180" width="100" height="80" as="geometry"/></mxCell>
+        <mxCell id="redis" value="Redis" style="shape=cylinder3;fillColor=#f8cecc;" vertex="1" parent="1"><mxGeometry x="820" y="280" width="100" height="60" as="geometry"/></mxCell>
+        <mxCell id="kafka" value="Kafka" style="shape=cylinder3;fillColor=#fff2cc;" vertex="1" parent="1"><mxGeometry x="820" y="360" width="100" height="60" as="geometry"/></mxCell>
+        <mxCell id="sched" value="Scheduler&#10;(asset/cost *-scheduler)" style="rounded=1;fillColor=#dae8fc;" vertex="1" parent="1"><mxGeometry x="220" y="500" width="200" height="60" as="geometry"/></mxCell>
+        <mxCell id="coll" value="Collector&#10;(asset/cost *-collector)" style="rounded=1;fillColor=#dae8fc;" vertex="1" parent="1"><mxGeometry x="460" y="500" width="200" height="60" as="geometry"/></mxCell>
+        <mxCell id="dp" value="DataProcess&#10;(asset/cost *-dataprocess, *-aggregator, spark-batch, mart-batch)" style="rounded=1;fillColor=#dae8fc;" vertex="1" parent="1"><mxGeometry x="700" y="500" width="300" height="60" as="geometry"/></mxCell>
+        <mxCell id="csp" value="CSP API (AWS/Azure/NCP)" style="rounded=1;fillColor=#f5f5f5;" vertex="1" parent="1"><mxGeometry x="1060" y="500" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="devos" value="DevOS (별도 도메인)" style="rounded=1;fillColor=#f8cecc;" vertex="1" parent="1"><mxGeometry x="1060" y="120" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="e1" style="endArrow=classic;" edge="1" parent="1" source="user" target="web"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=classic;" edge="1" parent="1" source="web" target="gw"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=classic;" edge="1" parent="1" source="gw" target="sso"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="endArrow=classic;" edge="1" parent="1" source="gw" target="cmpapi"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="endArrow=classic;" edge="1" parent="1" source="gw" target="costapi"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="endArrow=classic;" edge="1" parent="1" source="gw" target="assetapi"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="endArrow=classic;" edge="1" parent="1" source="gw" target="platapi"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="endArrow=classic;" edge="1" parent="1" source="cmpapi" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="endArrow=classic;" edge="1" parent="1" source="costapi" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="endArrow=classic;" edge="1" parent="1" source="cmpapi" target="devos"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" style="endArrow=classic;" edge="1" parent="1" source="sched" target="coll"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="endArrow=classic;" edge="1" parent="1" source="coll" target="csp"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="endArrow=classic;" edge="1" parent="1" source="coll" target="kafka"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" style="endArrow=classic;" edge="1" parent="1" source="kafka" target="dp"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e15" style="endArrow=classic;" edge="1" parent="1" source="dp" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

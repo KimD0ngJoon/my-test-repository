@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net" modified="2026-04-24T00:00:00.000Z" agent="claude" version="24.0.0">
+  <diagram id="system-view" name="System Architecture">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="한화생명 CMP 고도화 - 시스템 아키텍처 (초안 v0.1)" style="text;html=1;fontSize=20;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="10" width="800" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="idc" value="죽전 IDC (Tanzu)" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="820" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="jungyo" value="중요망 (CR/배포)" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="780" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="devos" value="DevOS (devops-prod namespace)&#10;portal / gateway / pipeline / topology&#10;project / scheduler / toolchain&#10;Jenkins / AWX / Gitea / Vault / Kafka / Keycloak" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="140" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="itsupport" value="IT Support (배포)&#10;- CR 망분리 로그인 모듈&#10;- 배포 History MySQL Enterprise" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="140" width="360" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="upmu" value="업무망 (CMP)" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="780" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="cmpapp" value="CMP Application (cmp-app namespace)" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="420" width="740" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="web" value="hanwha-cmp-web&#10;(React)" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="120" y="460" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="hanwha-cmp-api&#10;cost-common-api&#10;cost-360-common-api&#10;asset-api" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="280" y="460" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="plat" value="plat-360-api&#10;plat-360-portal-api&#10;plat-360-sso" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="480" y="460" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sso" value="Keycloak&#10;(SSO/IAM)" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="660" y="460" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cmpbatch" value="CMP Batch (cmp-batch namespace) - Application과 물리 분리" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="640" width="740" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="assetbatch" value="Asset 배치&#10;aws/azure/ncp-scheduler&#10;aws/azure/ncp-collector&#10;aws/azure/ncp-dataprocess&#10;common-scheduler/dataprocess&#10;es-dataprocess&#10;resourceopti-dataprocess&#10;server-scheduling-batch" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="120" y="680" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="costbatch" value="Cost 배치&#10;aws-billing-collector&#10;aws-billing-legacy-batch&#10;aws-billing-mart-batch&#10;aws-spark-batch&#10;azure-billing-collector&#10;azure-billing-aggregator&#10;360-nbs-billing-batch" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="360" y="680" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="commonbatch" value="공통 배치&#10;hanwha-cmp-batch" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="600" y="680" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="infra" value="공통 인프라&#10;MySQL Enterprise / Redis&#10;Kafka / Vault / Harbor&#10;GitLab / Prometheus / ELK" style="rounded=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="600" y="780" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="csp" value="CSP 영역 (Public)" style="rounded=1;fillColor=#f5f5f5;strokeColor=#666666;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="60" width="620" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="aws" value="AWS (Linked Account)&#10;- Cost &amp; Usage Report (CUR)&#10;- Resource API" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="940" y="120" width="580" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="azure" value="Azure (Subscription)&#10;- Cost Management API&#10;- Resource Graph" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="940" y="380" width="580" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="ncp" value="NCP FIN (Subaccount)&#10;- Billing API&#10;- Resource API" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="940" y="640" width="580" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="assetbatch" target="aws">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="costbatch" target="azure">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;strokeColor=#000000;" edge="1" parent="1" source="costbatch" target="ncp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;strokeColor=#666666;dashed=1;" edge="1" parent="1" source="api" target="devos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
